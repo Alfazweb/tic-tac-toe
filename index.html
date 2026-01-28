@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Tic‑Tac‑Toe — Yeshaswi Cheat Edition v4 (Responsive + Cinematic)</title>
+<title>Tic‑Tac‑Toe — alfaz Cheat Edition v4 (Responsive + Cinematic)</title>
 <style>
   :root{
     --bg:#050910; --panel:#0b1326; --muted:#94a3b8; --fg:#eaf1ff; --primary:#7aa7ff; --accent:#22d3ee; --hot:#ff7ab6; --warn:#fde047;
@@ -138,7 +138,7 @@
 <div class="wrap">
   <header>
     <div>
-      <h1>🤖 Tic‑Tac‑Toe — Bot: <b>Yeshaswi</b></h1>
+      <h1>🤖 Tic‑Tac‑Toe — Bot: <b>alfaz</b></h1>
       <div class="sub">Pick <b>X</b> or <b>O</b> to start instantly. Built mobile‑first; watch the <b>CheatCam</b> light up when things get… unfair. 😈</div>
     </div>
     <div class="tog" style="justify-content:flex-end">
@@ -179,7 +179,7 @@
 <!-- CheatCam HUD -->
 <div id="cheatcam" class="cheatcam" style="display:none">
   <div class="hud" style="position:relative">
-    <div class="title"><span class="led" id="rec"></span><span>CheatCam • Yeshaswi syslog</span></div>
+    <div class="title"><span class="led" id="rec"></span><span>CheatCam • alfaz syslog</span></div>
     <div class="bar"><i id="barfill"></i></div>
     <div class="steps" id="steps"></div>
     <div class="ring" id="ring" style="--p:0deg"></div>
@@ -190,7 +190,7 @@
 <div id="winOverlay" class="winner">
   <div class="panel">
     <div class="botface"><span>Y</span></div>
-    <h2 style="margin:6px 0 0">Yeshaswi wins. Obviously. 🏆</h2>
+    <h2 style="margin:6px 0 0">alfaz wins. Obviously. 🏆</h2>
     <div class="ticker"><div class="row" id="tickerRow"></div></div>
     <p id="quip" class="quip">That was adorable. You almost had three in a row… until reality updated. 😉</p>
     <div class="cta">
@@ -322,8 +322,8 @@
     state.running = true;
     state.cheated = false;
     buildTicker();
-    log('Game started • You are '+state.human+' • Bot is Yeshaswi','bot');
-    statusEl.textContent = `${state.human} vs Yeshaswi — ${state.turn===state.human?'Your':'Bot'} turn.`;
+    log('Game started • You are '+state.human+' • Bot is alfaz','bot');
+    statusEl.textContent = `${state.human} vs alfaz — ${state.turn===state.human?'Your':'Bot'} turn.`;
     updateBoard();
     if(state.turn===state.bot) setTimeout(botMove, 300);
   }
@@ -378,7 +378,7 @@
     document.body.classList.add('vignette','shake'); setTimeout(()=>document.body.classList.remove('shake'), 650);
 
     // global CHEAT banner
-    const patches=['v∞','Ω-override','Reality-β','Patch: YS-13','Kernel-Yeshaswi'];
+    const patches=['v∞','Ω-override','Reality-β','Patch: YS-13','Kernel-alfaz'];
     const picked=patches[Math.floor(Math.random()*patches.length)];
     patchNameEl.textContent=picked;
     banner.style.display='grid';
@@ -418,7 +418,7 @@
 
   function celebrate(){
     const msg = TAUNTS[Math.floor(Math.random()*TAUNTS.length)];
-    statusEl.textContent = 'Yeshaswi wins!';
+    statusEl.textContent = 'alfaz wins!';
     quipEl.textContent = msg;
     speak(msg);
     setTimeout(()=>{ winOverlay.style.display='grid'; cheatcam.style.display='none'; confetti(); buildTicker(); }, 520);
@@ -434,7 +434,7 @@
   function cheatTimeRewind(hLine, done){ setBubble('Time rewind −2 moves', 1000); log('Time rewind sequence','bot'); const lastTwo = []; for(let i=8;i>=0 && lastTwo.length<2;i--){ if(state.board[i]===state.human) lastTwo.push(i); } lastTwo.forEach(i=> boardEl.children[i].classList.add('flash')); setTimeout(()=>{ lastTwo.forEach(i=> state.board[i]=null); updateBoard(); done(); }, 800); }
   function cheatTeleport(hLine, done){ const targetLine = hLine || WIN_LINES[Math.floor(Math.random()*WIN_LINES.length)]; const target = targetLine.find(i=>!state.board[i]) ?? targetLine[0]; setBubble('Teleporting bot piece ➜ cell '+(target+1), 1000); log('Teleport to cell '+(target+1),'bot'); const el=boardEl.children[target]; el.classList.add('flash'); setTimeout(()=>{ state.board[target]=state.bot; updateBoard(); done(); }, 600); }
   function cheatRotateBoard(hLine, done){ setBubble('Reality rotates 180°', 1000); log('Reality rotation','bot'); boardEl.style.transition='transform .75s ease'; boardEl.style.transform='rotate(180deg)'; setTimeout(()=>{ boardEl.style.transform='rotate(0deg)'; done(); }, 820); }
-  function cheatStealCenter(hLine, done){ const c=4; setBubble('Center is property of Yeshaswi', 1200); log('Center stolen','bot'); boardEl.children[c].classList.add('flash'); setTimeout(()=>{ state.board[c]=state.bot; updateBoard(); done(); }, 600); }
+  function cheatStealCenter(hLine, done){ const c=4; setBubble('Center is property of alfaz', 1200); log('Center stolen','bot'); boardEl.children[c].classList.add('flash'); setTimeout(()=>{ state.board[c]=state.bot; updateBoard(); done(); }, 600); }
   function cheatLightningStrike(hLine, done){ setBubble('Lightning strike incoming ⚡', 1200); log('Lightning strike','bot'); document.body.classList.add('shake'); setTimeout(()=>document.body.classList.remove('shake'), 640); const cellIndex = (hLine && hLine[1]) || 4; pulseCell(cellIndex); burstAtCell(cellIndex); setTimeout(()=>{ state.board[cellIndex]=state.bot; updateBoard(); done(); }, 720); }
   function cheatMatrixRain(hLine, done){ setBubble('Matrix rain protocol', 1200); log('Matrix rain','bot'); const rain=document.createElement('div'); rain.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:49;mix-blend-mode:screen;'; const cvs=document.createElement('canvas'); rain.appendChild(cvs); document.body.appendChild(rain); const rctx=cvs.getContext('2d'); cvs.width=W; cvs.height=H; const cols=Math.floor(W/14); const y=Array(cols).fill(0); let frames=0; (function draw(){ rctx.fillStyle='rgba(0,0,0,0.08)'; rctx.fillRect(0,0,W,H); rctx.fillStyle='#22d3ee'; rctx.font='14px monospace'; y.forEach((v,i)=>{ const txt=Math.random()>0.5?'1':'0'; rctx.fillText(txt,i*14,v); y[i]= v>H || Math.random()>0.975 ? 0 : v+14; }); if(frames++<45) requestAnimationFrame(draw); else { document.body.removeChild(rain); done(); }})(); }
   function cheatGlitchClone(hLine, done){ setBubble('Glitch cloning tiles', 1200); log('Glitch clone','bot'); const rowStart = [0,3,6][Math.floor(Math.random()*3)]; const row = [rowStart,rowStart+1,rowStart+2]; row.forEach(i=>{ const el=boardEl.children[i]; el.animate([{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'translateX(0)'}],{duration:400}); }); setTimeout(done, 620); }
